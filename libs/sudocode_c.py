@@ -47,10 +47,18 @@ def get_code(filename):
 			start_for = (line_elem[2].split("="))[-1]	#tokenising at = to understand what the start value is
 			variables.append("int")		#appending the type int to variables stack as we're assuming that the looping var is a newly defined temp one
 			variables.append((line_elem[2].split("="))[0])	#tokenising at = to know what the var name is to push into stack
-			if(int(start_for) < int(line_elem[4])):		#check to see whether loop is incrementing loop or decrementing loop
-				line_of_code += "for(int " + line_elem[2] + "; " + (line_elem[2].split("="))[0] + " <= " + line_elem[4] + "; " + (line_elem[2].split("="))[0] + "+=" + (line_elem[-1].split("="))[-1] + ")\n{"
+                        #check to see whether loop is incrementing loop or decrementing loop
+			if(int(start_for) < int(line_elem[4])):						
+                            line_of_code += "for(int " + line_elem[2] + "; " + 
+                                            (line_elem[2].split("="))[0] +
+                                            " <= " + line_elem[4] + "; " + 
+                                            (line_elem[2].split("="))[0] +
+                                            "+=" + (line_elem[-1].split("="))[-1] + ")\n{"
 			else:
-				line_of_code += "for(int " + line_elem[2] + "; " + (line_elem[2].split("="))[0] + " >= " + line_elem[4] + "; " + (line_elem[2].split("="))[0] + "-=" + (line_elem[-1].split("="))[-1] + ")\n{"
+                            line_of_code += "for(int " + line_elem[2] + "; " +
+                            (line_elem[2].split("="))[0] + " >= " +
+                            line_elem[4] + "; " + (line_elem[2].split("="))[0] +
+                            "-=" + (line_elem[-1].split("="))[-1] + ")\n{"
 
 		elif("while" in line_elem):	#check if while loop implementation
 			line_of_code += "while(" + line_elem[-1] + ")\n{"	#condition added in while
